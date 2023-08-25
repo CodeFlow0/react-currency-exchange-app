@@ -7,8 +7,8 @@ body {
 }
 
 .main-text-container {
-  background: #202020;
-  height: 100vh;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='250' preserveAspectRatio='none' viewBox='0 0 1440 250'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1038%26quot%3b)' fill='none'%3e%3crect width='1440' height='250' x='0' y='0' fill='rgba(32%2c 32%2c 32%2c 1)'%3e%3c/rect%3e%3cpath d='M36 250L286 0L503.5 0L253.5 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1039%26quot%3b)'%3e%3c/path%3e%3cpath d='M258.6 250L508.6 0L655.6 0L405.6 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1039%26quot%3b)'%3e%3c/path%3e%3cpath d='M482.20000000000005 250L732.2 0L933.2 0L683.2 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1039%26quot%3b)'%3e%3c/path%3e%3cpath d='M730.8000000000001 250L980.8000000000001 0L1309.3000000000002 0L1059.3000000000002 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1039%26quot%3b)'%3e%3c/path%3e%3cpath d='M1402 250L1152 0L963 0L1213 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1040%26quot%3b)'%3e%3c/path%3e%3cpath d='M1166.4 250L916.4000000000001 0L680.9000000000001 0L930.9000000000001 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1040%26quot%3b)'%3e%3c/path%3e%3cpath d='M922.8 250L672.8 0L477.79999999999995 0L727.8 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1040%26quot%3b)'%3e%3c/path%3e%3cpath d='M716.1999999999999 250L466.19999999999993 0L139.19999999999993 0L389.19999999999993 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1040%26quot%3b)'%3e%3c/path%3e%3cpath d='M1255.911238648755 250L1440 65.91123864875496L1440 250z' fill='url(%26quot%3b%23SvgjsLinearGradient1039%26quot%3b)'%3e%3c/path%3e%3cpath d='M0 250L184.08876135124504 250L 0 65.91123864875496z' fill='url(%26quot%3b%23SvgjsLinearGradient1040%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1038'%3e%3crect width='1440' height='250' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0%25' y1='100%25' x2='100%25' y2='0%25' id='SvgjsLinearGradient1039'%3e%3cstop stop-color='rgba(244%2c 86%2c 8%2c 0.22)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(244%2c 86%2c 8%2c 0.22)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient1040'%3e%3cstop stop-color='rgba(244%2c 86%2c 8%2c 0.22)' offset='0'%3e%3c/stop%3e%3cstop stop-opacity='0' stop-color='rgba(244%2c 86%2c 8%2c 0.22)' offset='0.66'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e") no-repeat center / cover;
+  min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
@@ -36,9 +36,18 @@ body {
   margin: 1rem 0 3rem 0;
 }
 
+.button-wrapper {
+  margin: 0 auto;
+  max-width: 600px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
 .left {
   border: 3px solid #f45608;
-  margin-right: 2.5rem;
+  /* margin-right: 2.5rem; */
 }
 
 .left:before {
@@ -47,7 +56,7 @@ body {
 
 .right {
   border: 3px solid #e2048d;
-  margin-left: 2.5rem;
+  /* margin-left: 2.5rem; */
 }
 
 .right:before {
@@ -84,4 +93,40 @@ body {
 
 .button:hover:before {
   transform: translateX(0);
+}
+
+
+@media (max-width: 768px) {
+  #title {
+    font-size: 6.5rem;
+  }
+
+  #sub-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #title {
+    font-size: 5rem;
+  }
+
+  #sub-title {
+    font-size: 1.8rem;
+  }
+
+  .button {
+    padding: 1.5rem 3rem;
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .button-wrapper {
+    flex-direction: column;
+  }
+
+  .left {
+    margin-bottom: 2rem;
+  }
 }

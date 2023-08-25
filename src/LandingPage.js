@@ -10,8 +10,10 @@ function LandingPage() {
           <div className="col-12 main-text">
             <h1 id="title">Welcome to Currency Exchange App</h1>
             <p id="sub-title">Explore currency exchange rates and convert between different currencies.</p>
-            <Link to="/exchange-rates" className="left button">Exchange Rates</Link>
-            <Link to="/converter" className="right button">Currency Converter</Link>
+            <div className="button-wrapper">
+              <Link to="/exchange-rates" className="left button">Exchange Rates</Link>
+              <Link to="/converter" className="right button">Currency Converter</Link>
+            </div>
           </div>
         </div>
       </div>

@@ -13,24 +13,30 @@ function ExchangeRateLists() {
   }, []);
 
   return (
-    <div>
-      <h2>Exchange Rates</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Currency</th>
-            <th>Rate</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(exchangeRates).map(([currency, rate]) => (
-            <tr key={currency}>
-              <td><Link to={`/currency/${currency}`}>{currency}</Link></td>
-              <td>{rate.toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="page-wrapper">
+      <div className="container">
+        <div className="row">
+          <div className="col-12 exchange-rates-wrapper">
+            <h2 id="exchange-rates-title">Exchange <span>Rates</span></h2>
+            <table className="exchange-table">
+              <thead className="table-head">
+                <tr className="table-subtitle">
+                  <th>Currency</th>
+                  <th>Rate</th>
+                </tr>
+              </thead>
+              <tbody className="table-body">
+                {Object.entries(exchangeRates).map(([currency, rate]) => (
+                  <tr key={currency} className="table-content">
+                    <td><Link to={`/currency/${currency}`} className="currency">{currency}</Link></td>
+                    <td className="rate">{rate.toFixed(2)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
