@@ -1,0 +1,87 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.main-text-container {
+  background: #202020;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-text {
+  text-align: center;
+}
+
+#title {
+  background-image: linear-gradient(to right, #f45608, #e2048d);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 8rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+#sub-title {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin: 1rem 0 3rem 0;
+}
+
+.left {
+  border: 3px solid #f45608;
+  margin-right: 2.5rem;
+}
+
+.left:before {
+  background-color: #f45608;
+}
+
+.right {
+  border: 3px solid #e2048d;
+  margin-left: 2.5rem;
+}
+
+.right:before {
+  background-color: #e2048d;
+}
+
+.button {
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 50px;
+  color: #ffffff;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
+}
+
+.button:hover:before {
+  transform: translateX(0);
+}

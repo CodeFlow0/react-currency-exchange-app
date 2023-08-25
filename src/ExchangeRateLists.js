@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getExchangeRates } from './api'; // Implement the API call function
+import { getExchangeRates } from './api';
+import './ExchangeRateLists.css';
 
 function ExchangeRateLists() {
   const [exchangeRates, setExchangeRates] = useState([]);

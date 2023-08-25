@@ -1,0 +1,21 @@
+.nav-title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.nav-title>span:first-child {
+  color: #f45608;
+}
+
+.nav-title>span:last-child {
+  color: #e2048d;
+}
+
+.navbar-toggler {
+  background-color: #ffffff;
+}
