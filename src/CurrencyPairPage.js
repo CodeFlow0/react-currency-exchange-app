@@ -17,7 +17,7 @@ function CurrencyPairPage() {
     <div className="pair-page-wrapper">
       <div className="container">
         <div className="row">
-          <div className="col-12 content-wrapper">
+          <div className="col-12 pair-info-wrapper">
             <h2 className="pair-name">{pair}</h2>
             {pairInfo.base ? <p className="base">Base: {pairInfo.base}</p> : null}
             {pairInfo.date ? <p className="date">Date: {pairInfo.date}</p> : null}
