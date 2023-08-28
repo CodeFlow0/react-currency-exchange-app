@@ -1,0 +1,110 @@
+.content-wrapper {
+  min-height: 100vh;
+}
+
+.converter-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #f45608, #e2048d);
+}
+
+#converter-title {
+  font-size: 4rem;
+  color: #ffffff;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input:nth-child(3) {
+  margin: 2rem 0;
+}
+
+.input-label {
+  font-size: 2rem;
+}
+
+.number-input {
+  appearance: none;
+  width: 250px;
+  padding: .75rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 1.6rem;
+}
+
+.number-input:focus {
+  border-color: #202020;
+}
+
+.dropdown-input {
+  appearance: none;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+  color: #333;
+  font-size: 14px;
+  width: 250px;
+}
+
+.dropdown-input:focus {
+  border-color: #202020;
+  outline: none;
+}
+
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  background-color: #202020;
+}
+
+.checkmark-wrapper {
+  height: 150px;
+  width: 150px;
+  border-radius: 100px;
+  background: linear-gradient(to top left, #f45608, #e2048d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkmark {
+  width: 50%;
+  height: 50%;
+  color: #ffffff;
+}
+
+.amounts-text {
+  width: 150px;
+  margin-top: 5rem;
+}
+
+.amount {
+  font-size: 5rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+.entered {
+  color: #f45608;
+}
+
+.converted {
+  color: #e2048d;
+}
+
+.selected-currency {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: #46494c;
+  display: block;
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getExchangeRates } from './api'; // Implement the API call function
+import { getExchangeRates } from './api';
+import { BsCheckCircle } from 'react-icons/bs';
+import './CurrencyConverter.css';
 
 function CurrencyConverter() {
   const [currencies, setCurrencies] = useState([]);
@@ -42,37 +44,44 @@ function CurrencyConverter() {
   };
 
   return (
-    <div>
-      <h2>Currency Converter</h2>
-      <div>
-        <label>Amount:</label>
-        <input type="number" value={amount} onChange={handleAmountChange} />
-      </div>
-      <div>
-        <label>Source Currency:</label>
-        <select value={sourceCurrency} onChange={handleSourceCurrencyChange}>
-          {currencies.map(currency => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label>Target Currency:</label>
-        <select value={targetCurrency} onChange={handleTargetCurrencyChange}>
-          {currencies.map(currency => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <p>
-          {amount} {sourceCurrency} is approximately {convertedAmount.toFixed(2)}{' '}
-          {targetCurrency}
-        </p>
+    <div className="container-fluid">
+      <div className="row content-wrapper">
+        <div className="col-12 col-md-7 converter-wrapper">
+          <h2 id="converter-title">Currency Converter</h2>
+          <div className="input">
+            <label className="input-label">Amount:</label>
+            <input type="number" value={amount} onChange={handleAmountChange} className="number-input" />
+          </div>
+          <div className="input">
+            <label className="input-label">Source Currency:</label>
+            <select value={sourceCurrency} onChange={handleSourceCurrencyChange} className="dropdown-input">
+              {currencies.map(currency => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="input">
+            <label className="input-label">Target Currency:</label>
+            <select value={targetCurrency} onChange={handleTargetCurrencyChange} className="dropdown-input">
+              {currencies.map(currency => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className=" col-12 col-md-5 result-wrapper">
+          <div className="checkmark-wrapper">
+            <BsCheckCircle className="checkmark" />
+          </div>
+          <div className="amounts-text">
+            <p className="amount entered">{amount}<span className="selected-currency">{sourceCurrency}</span></p>
+            <p className="amount converted">{convertedAmount.toFixed(2)}{' '}<br /><span className="selected-currency">{targetCurrency}</span></p>
+          </div>
+        </div>
       </div>
     </div>
   );
