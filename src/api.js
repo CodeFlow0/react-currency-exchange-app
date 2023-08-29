@@ -1,6 +1,6 @@
 // api.js
 
-const API_BASE_URL = 'https://api.frankfurter.app';
+export const API_BASE_URL = 'https://api.frankfurter.app';
 
 export async function getExchangeRates() {
   try {
