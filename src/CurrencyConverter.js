@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getExchangeRates, getCurrencyPairInfo } from './api';
+import { getExchangeRates } from './api';
 import { Chart } from 'chart.js/auto';
 import { BsCheckCircle } from 'react-icons/bs';
 import './CurrencyConverter.css';
@@ -13,6 +13,34 @@ function CurrencyConverter() {
   const [amount, setAmount] = useState(1);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [priceData, setPriceData] = useState([]);
+  const [priceChart, setPriceChart] = useState(null); // Declare using useState
+
+  // Function to update the chart with new data
+  const updateChart = (dates, prices) => {
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    if (priceChart) {
+      priceChart.data.labels = dates;
+      priceChart.data.datasets[0].data = prices;
+      priceChart.data.datasets[0].label = `${sourceCurrency}/${targetCurrency}`;
+      priceChart.update();
+    } else {
+      const chartOptions = {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: `${sourceCurrency}/${targetCurrency}`,
+            data: prices,
+            borderColor: '#f45608',
+            borderWidth: 1,
+            fill: false
+          }]
+        }
+      };
+      const newPriceChart = new Chart(ctx, chartOptions);
+      setPriceChart(newPriceChart);
+    }
+  };
 
   useEffect(() => {
     // Fetch historical prices for the currency pair
@@ -23,34 +51,11 @@ function CurrencyConverter() {
         const prices = dates.map(date => data.rates[date][targetCurrency]);
         setPriceData(prices);
 
-        // Create or update the chart
-        const ctx = document.getElementById('priceChart').getContext('2d');
-        if (priceChart) {
-          priceChart.data.labels = dates;
-          priceChart.data.datasets[0].label = `${sourceCurrency}/${targetCurrency}`;
-          priceChart.update();
-        } else {
-          const chartOptions = {
-            type: 'line',
-            data: {
-              labels: dates,
-              datasets: [{
-                label: `${sourceCurrency}/${targetCurrency}`,
-                data: prices,
-                borderColor: '#f45608',
-                borderWidth: 1,
-                fill: false
-              }]
-            }
-          };
-          priceChart = new Chart(ctx, chartOptions);
-        }
+        // Update the chart with new data
+        updateChart(dates, prices);
       })
       .catch(error => console.error(error));
   }, [sourceCurrency, targetCurrency]);
-
-
-  let priceChart; // Reference to the chart instance
 
   useEffect(() => {
     // Fetch currencies from the API and set them in the state
