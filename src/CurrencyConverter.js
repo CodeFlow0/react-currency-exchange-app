@@ -129,10 +129,10 @@ function CurrencyConverter() {
             <p className="amount converted">{convertedAmount.toFixed(2)}{' '}<br /><span className="selected-currency">{targetCurrency}</span></p>
           </div>
         </div>
-        {/* Chart Component */}
-        <div className='col-12'>
-          <canvas id='priceChart' width='400' height='200' className='p-5'></canvas>
-        </div>
+      </div>
+      {/* Chart Component */}
+      <div className='col-12'>
+        <canvas id='priceChart' width='400' height='200' className='p-5'></canvas>
       </div>
     </div>
   );
