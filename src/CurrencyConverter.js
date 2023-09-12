@@ -4,7 +4,7 @@ import { Chart } from 'chart.js/auto';
 import { BsCheckCircle } from 'react-icons/bs';
 import './CurrencyConverter.css';
 
-const API_BASE_URL = 'https://api.frankfurter.app';
+const API_BASE_URL = 'https://api.frankfurter.app?base=USD';
 
 function CurrencyConverter() {
   const [currencies, setCurrencies] = useState([]);

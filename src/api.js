@@ -4,7 +4,7 @@ export const API_BASE_URL = 'https://api.frankfurter.app';
 
 export async function getExchangeRates() {
   try {
-    const response = await fetch(`${API_BASE_URL}/latest`);
+    const response = await fetch(`${API_BASE_URL}/latest?from=USD`);
     if (!response.ok) {
       throw new Error('Failed to fetch exchange rates');
     }
