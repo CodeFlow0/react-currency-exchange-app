@@ -60,7 +60,14 @@ function CurrencyConverter() {
   useEffect(() => {
     // Fetch currencies from the API and set them in the state
     getExchangeRates()
-      .then(data => setCurrencies(Object.keys(data.rates)))
+      .then(data => {
+        // Manually add 'USD' to the list of currencies if not present
+        const currencyList = Object.keys(data.rates);
+        if (!currencyList.includes('USD')) {
+          currencyList.unshift('USD');
+        }
+        setCurrencies(currencyList);
+      })
       .catch(error => console.error(error));
   }, []);
 
