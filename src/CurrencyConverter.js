@@ -1,19 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { getExchangeRates } from './api';
 import { Chart } from 'chart.js/auto';
 import { BsCheckCircle } from 'react-icons/bs';
 import './CurrencyConverter.css';
 
-const API_BASE_URL = 'https://api.frankfurter.app?base=USD';
-
 function CurrencyConverter() {
   const [currencies, setCurrencies] = useState([]);
-  const [sourceCurrency, setSourceCurrency] = useState('USD'); // Set default to USD
-  const [targetCurrency, setTargetCurrency] = useState('CAD'); // Set default to CAD
+  const [sourceCurrency, setSourceCurrency] = useState('USD');
+  const [targetCurrency, setTargetCurrency] = useState('CAD');
   const [amount, setAmount] = useState(1);
   const [convertedAmount, setConvertedAmount] = useState(0);
   const [priceData, setPriceData] = useState([]);
-  const [priceChart, setPriceChart] = useState(null); // Declare using useState
+  const [priceChart, setPriceChart] = useState(null);
+
+  useEffect(() => {
+    // Fetch the list of available currencies
+    fetch('https://api.frankfurter.app/currencies')
+      .then(response => response.json())
+      .then(data => {
+        const currencyList = Object.keys(data);
+        setCurrencies(currencyList);
+      })
+      .catch(error => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    // Fetch exchange rates and calculate converted amount when source or target currency changes
+    fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${sourceCurrency}&to=${targetCurrency}`)
+      .then(response => response.json())
+      .then(data => {
+        setConvertedAmount(data.rates[targetCurrency]);
+      })
+      .catch(error => console.error(error));
+  }, [sourceCurrency, targetCurrency, amount]);
 
   // Function to update the chart with new data
   const updateChart = (dates, prices) => {
@@ -44,7 +62,7 @@ function CurrencyConverter() {
 
   useEffect(() => {
     // Fetch historical prices for the currency pair
-    fetch(`${API_BASE_URL}/1999-01-04..?from=${sourceCurrency}&to=${targetCurrency}`)
+    fetch(`https://api.frankfurter.app/${sourceCurrency}.json?from=1999-01-04&to=${targetCurrency}`)
       .then(response => response.json())
       .then(data => {
         const dates = Object.keys(data.rates).sort();
@@ -56,34 +74,6 @@ function CurrencyConverter() {
       })
       .catch(error => console.error(error));
   }, [sourceCurrency, targetCurrency]);
-
-  useEffect(() => {
-    // Fetch currencies from the API and set them in the state
-    getExchangeRates()
-      .then(data => {
-        // Manually add 'USD' to the list of currencies if not present
-        const currencyList = Object.keys(data.rates);
-        if (!currencyList.includes('USD')) {
-          currencyList.unshift('USD');
-        }
-        setCurrencies(currencyList);
-      })
-      .catch(error => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    // Fetch the exchange rate and calculate converted amount
-    if (sourceCurrency !== targetCurrency) {
-      getExchangeRates(sourceCurrency, targetCurrency)
-        .then(data => {
-          const rate = data.rates[targetCurrency];
-          setConvertedAmount(amount * rate);
-        })
-        .catch(error => console.error(error));
-    } else {
-      setConvertedAmount(amount);
-    }
-  }, [sourceCurrency, targetCurrency, amount]);
 
   const handleSourceCurrencyChange = event => {
     setSourceCurrency(event.target.value);

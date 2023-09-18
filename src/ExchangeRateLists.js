@@ -18,7 +18,7 @@ function ExchangeRateLists() {
         <div className="row">
           <div className="col-12 exchange-rates-wrapper">
             <h2 id="exchange-rates-title">Exchange <span>Rates</span></h2>
-            <h3 className='list-base'>Base Currency: EUR</h3>
+            <h3 className='list-base'>Base Currency: USD</h3>
             <table className="exchange-table">
               <thead className="table-head">
                 <tr className="table-subtitle">
