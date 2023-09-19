@@ -62,7 +62,9 @@ function CurrencyConverter() {
 
   useEffect(() => {
     // Fetch historical prices for the currency pair
-    fetch(`https://api.frankfurter.app/${sourceCurrency}.json?from=1999-01-04&to=${targetCurrency}`)
+    const startDate = '1999-01-04';
+    const endDate = new Date().toISOString().split('T')[0];
+    fetch(`https://api.frankfurter.app/${startDate}..${endDate}?from=${sourceCurrency}&to=${targetCurrency}`)
       .then(response => response.json())
       .then(data => {
         const dates = Object.keys(data.rates).sort();
